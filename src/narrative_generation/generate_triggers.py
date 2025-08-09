@@ -7,6 +7,7 @@ import sys
 sys.path.append('.') # Allows imports from the project root
 
 from config import main_config as cfg
+from src.events.event_bus import event_bus, Event
 
 # --- Main Application ---
 
@@ -57,6 +58,9 @@ def process_payload(filepath, prompt_content):
         with open(output_filepath, "w", encoding="utf-8") as f:
             f.write(output_content)
 
+        print(f"Successfully processed. Output saved to: {output_filepath}")
+
+        event_bus.publish(Event("NARRATIVE_FILE_READY", {"filepath": output_filepath}))
         print(f"Successfully processed. Output saved to: {output_filepath}")
         return True
 

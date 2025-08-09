@@ -50,7 +50,7 @@ class NarrativeManager:
         self.evaluator = NarrativeEvaluator()
         self.evaluator.register()
         event_bus.subscribe("NARRATIVE_SCORE_DELTA", self._apply_score_delta)
-
+        event_bus.subscribe("NARRATIVE_FILE_READY", self._on_narrative_file_ready)
     # --- Public Interfaces ---
 
     def add_narratives(self, new_narratives: List[Narrative]):
@@ -158,6 +158,35 @@ class NarrativeManager:
         # The add_narratives method already handles duplicate checking.
         if all_narratives_to_add:
             self.add_narratives(all_narratives_to_add)
+    
+    def load_narrative_file(self, filepath: str) -> int:
+        """
+        Load a single narrative file and rebuild the FAISS index from cached embeddings.
+        Only *new* narratives will compute embeddings (via compute_embeddings(force=False) in _rebuild_index).
+        """
+        import os
+        if not os.path.isfile(filepath):
+            print(f"  ! File not found: {filepath}")
+            return 0
+
+        new_list = self._load_narrative(filepath)
+        if not new_list:
+            print(f"  ! No narratives parsed from {os.path.basename(filepath)}")
+            return 0
+
+        # Add only unseen narratives
+        fresh = [n for n in new_list if n.narrative_id not in self.narratives]
+        for n in fresh:
+            self.narratives[n.narrative_id] = n
+
+        if fresh:
+            # Rebuilds FAISS from cached vectors; computes embeddings only for missing ones
+            self._rebuild_index()
+            print(f"📥 Ingested {len(fresh)} new narratives from {os.path.basename(filepath)}")
+        else:
+            print(f"ℹ️ No new narratives in {os.path.basename(filepath)} (all IDs existed).")
+
+        return len(fresh)
 
 
     # --- Persistence Interfaces ---
@@ -201,6 +230,16 @@ class NarrativeManager:
 
         print(f"  ✅ State loaded. Found {len(self.narratives)} narratives.")
 
+    def _on_narrative_file_ready(self, event):
+        path = (event.payload or {}).get("filepath")
+        if not path:
+            return
+        try:
+            added = self.load_narrative_file(path)
+            if added:
+                print(f"✅ Ingested {added} new narratives from {os.path.basename(path)}")
+        except Exception as e:
+            print(f"  ! Failed to ingest {path}: {e}")
 
     def _load_narrative(self, filepath: str) -> List['Narrative']:
         """
@@ -327,55 +366,26 @@ class NarrativeManager:
         print(f"▶️ Listening on pipe: {path} (window={window_size}, stride={stride})")
 
     def _rebuild_index(self):
-        """
-        Rebuild FAISS index using sequential embeddings with a simple progress bar.
-        """
+        # manager._rebuild_index()
         import faiss, numpy as np
-
-        print("  - Rebuilding search index with real embeddings...")
+        print("  - Rebuilding search index (from cached embeddings)...")
         dim = self.embedding_model.n_embd()
         self.index = faiss.IndexFlatIP(dim)
         self.index_map = []
 
-        # collect paraphrases
-        statements = []
+        all_vecs = []
+        total_new = 0
         for n in self.narratives.values():
-            for ev in n.key_events:
-                for s in ev.get('paraphrased_statements', []):
-                    if s and s.strip():
-                        statements.append(s.strip())
-                        self.index_map.append({"narrative_id": n.narrative_id, "statement_text": s.strip()})
+            total_new += n.compute_embeddings(self.embedding_model, force=False, suppress_output_ctx=suppress_output)
+            for ev, s, i in n.iter_paraphrases():
+                v = ev.get("paraphrased_embeddings", [None])[i]
+                if v is not None:
+                    all_vecs.append(v)
+                    self.index_map.append({"narrative_id": n.narrative_id, "statement_text": s})
 
-        if not statements:
-            print("  - ✅ Index rebuilt with 0 statements.")
-            return
-
-        # embed sequentially with progress bar
-        vecs, dropped = [], 0
-        for i, s in enumerate(tqdm(statements, desc="Embedding statements", unit="stmt")):
-            try:
-                with suppress_output():
-                    v = self.embedding_model.embed([s])
-                vecs.append(v[0])
-            except Exception:
-                dropped += 1
-                self.index_map[i] = None
-
-        # prune dropped entries
-        if dropped:
-            self.index_map = [m for m in self.index_map if m is not None]
-            print(f"  ! Dropped {dropped} statements due to embed errors.")
-
-        if not vecs:
-            print("  - ✅ Index rebuilt with 0 statements.")
-            return
-
-        X = np.asarray(vecs, dtype=np.float32)
-        faiss.normalize_L2(X)
-        self.index.add(X)
-        print(f"  - ✅ Index rebuilt with {self.index.ntotal} statements.")
-
-
+        if all_vecs:
+            X = np.asarray(all_vecs, dtype=np.float32); faiss.normalize_L2(X); self.index.add(X)
+        print(f"  - ✅ Index rebuilt with {self.index.ntotal} statements. (new embeds: {total_new})")
 
 if __name__ == "__main__":
     

@@ -126,6 +126,38 @@ class Narrative:
             "performance_score": self.performance_score
         }
 
+    def iter_paraphrases(self):
+        for ev in self.key_events:
+            stmts = ev.get("paraphrased_statements", []) or []
+            for i, s in enumerate(stmts):
+                s2 = (s or "").strip()
+                if s2:
+                    yield ev, s2, i
+
+    def compute_embeddings(self, embedding_model, force: bool=False, suppress_output_ctx=None) -> int:
+        new = 0
+        for ev in self.key_events:
+            stmts = ev.get("paraphrased_statements", []) or []
+            if not stmts: 
+                continue
+            embs = ev.get("paraphrased_embeddings")
+            if embs is None or force:
+                embs = [None] * len(stmts)
+                ev["paraphrased_embeddings"] = embs
+            for i, s in enumerate(stmts):
+                if not force and embs[i] is not None:
+                    continue
+                if not s or not s.strip():
+                    continue
+                if suppress_output_ctx is None:
+                    v = embedding_model.embed([s.strip()])[0]
+                else:
+                    with suppress_output_ctx():
+                        v = embedding_model.embed([s.strip()])[0]
+                embs[i] = v
+                new += 1
+        return new
+    
     def __repr__(self) -> str:
         return f"Narrative(id='{self.narrative_id}', parent='{self.parent_id}', status='{self.status}')"
 

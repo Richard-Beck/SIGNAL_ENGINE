@@ -5,6 +5,7 @@ from src.nlp.narrative_manager import NarrativeManager
 
 # adjust import to your project layout if needed:
 from src.data_ingestion.streamer import run_streamer_service   # or: from streamer import run_streamer_service
+from src.narrative_generation.generate_triggers import run_generator_service
 
 def ensure_fifo(path: str):
     if not os.path.exists(path):
@@ -26,14 +27,24 @@ def main():
     manager = NarrativeManager(cfg)
 
     # 4) Load prior state if present (restores FAISS; no re-embedding)
-    state_path = getattr(cfg, "TEST_NARRATIVE_MANAGER_PATH", None)
+    state_path = getattr(cfg, "NARRATIVE_MANAGER_PATH", None)
     if state_path and os.path.exists(state_path):
         manager.load_state(state_path)
-
+    else:
+        print(f"ℹ️ No saved state at {state_path}. Bootstrapping from {cfg.LLM_OUTPUT_DIR} ...")
+        manager.load_narratives_from_folder(cfg.LLM_OUTPUT_DIR)
+        # optional: persist so next start is fast
+        if state_path:
+            manager.save_state(state_path)
     # 5) Begin consuming the transcript pipe (uses cfg.TRANSCRIPT_PIPE_PATH)
     manager.start_match_pipe()  # chunking + match per window handled inside
 
-    # 6) Graceful shutdown: save state on SIGINT/SIGTERM
+    #
+    
+    t_gen = threading.Thread(target=run_generator_service, daemon=True)
+    t_gen.start()
+    print("▶️ Narrative generation service started")
+    
     def _shutdown(*_):
         try:
             if state_path:
