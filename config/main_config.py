@@ -27,6 +27,8 @@ NARRATIVE_MERGE_PROMPT_FILE = os.path.join(PROMPTS_DIR, "merge-narratives.txt")
 # State and log files
 LIVE_STATE_PREFIX = os.path.join(DATA_DIR, "live_db_state")
 CANDIDATE_STATE_PREFIX = os.path.join(DATA_DIR, "candidate_db_state")
+NARRATIVE_MANAGER_PATH = os.path.join(DATA_DIR, "narrative_manager.pkl")
+TEST_NARRATIVE_MANAGER_PATH = os.path.join(DATA_DIR, "test_narrative_manager.pkl")
 MATCH_LOG_FILE = os.path.join(LOG_DIR, "detected_matches.csv")
 LIVE_RESULTS_FILE = os.path.join(LOG_DIR, "live_results.csv")
 LLM_SERVER_LOG_FILE = os.path.join(LOG_DIR, "llm_server.log")
