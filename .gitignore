@@ -1,0 +1,39 @@
+# --- Virtual Environment ---
+# Never commit the virtual environment folder.
+# It contains local dependencies and is specific to your machine.
+.venv/
+venv/
+env/
+
+# --- Python Cache & Artifacts ---
+# These are generated automatically by Python and can be recreated.
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+build/
+dist/
+
+# --- Project Secrets ---
+# CRITICAL: Always ignore the .env file to keep your API keys
+# and other secrets out of version control.
+.env
+
+# --- Project Data ---
+# Ignore the entire data directory. This folder contains runtime-generated
+# files like logs, state files, indexes, and narratives. These are artifacts,
+# not source code.
+data/
+
+# --- IDE & Editor Configuration ---
+# Ignore configuration files from common editors and IDEs.
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# --- Operating System Files ---
+# Ignore metadata files created by macOS and Windows.
+.DS_Store
+Thumbs.db
