@@ -77,30 +77,42 @@ class Narrative:
 
     # --- Public Methods for the Manager to Call ---
     def record_match(self, match_timestamp: datetime, matched_text: str, similarity_score: float) -> Dict[str, Any]:
-        """
-        Updates the narrative's internal state and score after a successful match.
-        
-        This method is now also responsible for returning a dictionary of the
-        match details, which will be used to create the MatchEvent.
+      """
+      Updates the narrative's internal state, finds the corresponding event
+      for the matched text, and returns a detailed payload.
 
-        Returns:
-            A dictionary of primitive types representing the match event data.
-        """
-        # --- 1. Update Internal State ---
-        self.hit_count += 1
-        self.last_matched_at = match_timestamp
-        self.last_updated_at = match_timestamp
+      Returns:
+          A dictionary of primitive types representing the match event data,
+          now including the event_id and event_type.
+      """
+      # --- 1. Update Internal State ---
+      self.hit_count += 1
+      self.last_matched_at = match_timestamp
+      self.last_updated_at = match_timestamp
 
-        # --- 2. Return the Event Data Payload ---
-        return {
-            "narrative_id": self.narrative_id,
-            "narrative_status": self.status,
-            "narrative_title": self.narrative_title,
-            "affected_tickers": self.affected_tickers,
-            "match_timestamp": self.last_matched_at,
-            "matched_text": matched_text,
-            "similarity_score": similarity_score
-        }
+      # --- 2. Find the Event ID and Type for the matched_text ---
+      found_event_id = None
+      found_event_type = None
+      # Loop through each key event stored in the narrative
+      for event in self.key_events:
+          # Check if the matched text exists in this event's list of paraphrased statements
+          if matched_text in event.get('paraphrased_statements', []):
+              found_event_id = event.get('event_id')
+              found_event_type = event.get('event_type')
+              break  # Stop searching once the match is found
+
+      # --- 3. Return the Expanded Event Data Payload ---
+      return {
+          "narrative_id": self.narrative_id,
+          "narrative_status": self.status,
+          "narrative_title": self.narrative_title,
+          "affected_tickers": self.affected_tickers,
+          "event_id": found_event_id,
+          "event_type": found_event_type,
+          "match_timestamp": self.last_matched_at,
+          "matched_text": matched_text,
+          "similarity_score": similarity_score
+      }
 
     def change_status(self, new_status: str):
         """Changes the narrative's lifecycle status."""

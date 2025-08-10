@@ -32,6 +32,7 @@ TEST_NARRATIVE_MANAGER_PATH = os.path.join(DATA_DIR, "test_narrative_manager.pkl
 MATCH_LOG_FILE = os.path.join(LOG_DIR, "detected_matches.csv")
 LIVE_RESULTS_FILE = os.path.join(LOG_DIR, "live_results.csv")
 LLM_SERVER_LOG_FILE = os.path.join(LOG_DIR, "llm_server.log")
+ARCHIVED_NARRATIVE_PATH = os.path.join(DATA_DIR, "archived_narratives")
 
 # Named pipe for real-time communication
 TRANSCRIPT_PIPE_PATH = "/tmp/transcript_pipe2"
@@ -43,6 +44,7 @@ TRANSCRIPT_PIPE_PATH = "/tmp/transcript_pipe2"
 # OpenRouter API
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions"
+CEREBRAS_API_KEY = os.getenv("CEREBRAS_API_KEY")
 # The HTTP_REFERER is required by the OpenRouter API.
 # You might need to change this if you deploy your application.
 HTTP_REFERER = "http://localhost"
@@ -52,7 +54,8 @@ HTTP_REFERER = "http://localhost"
 # Paths and settings for all local and remote models.
 
 # LLM for Narrative Generation and Merging (via OpenRouter)
-NARRATIVE_LLM_MODEL = "deepseek/deepseek-r1:free"
+#NARRATIVE_LLM_MODEL = "deepseek/deepseek-r1:free"
+NARRATIVE_LLM_MODEL = "gpt-oss-120b"
 
 # Local Embedding Model (for narrative_matcher.py)
 EMBEDDING_MODEL_PATH = os.path.expanduser("~/tools/llama.cpp/models/bge-large-en-v1.5-f16.gguf")

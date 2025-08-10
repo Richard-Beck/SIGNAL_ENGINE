@@ -1,5 +1,5 @@
 import os
-import requests
+# import requests # No longer needed for the primary API call
 import time
 from datetime import datetime
 
@@ -8,6 +8,7 @@ sys.path.append('.') # Allows imports from the project root
 
 from config import main_config as cfg
 from src.events.event_bus import event_bus, Event
+from cerebras.cloud.sdk import Cerebras # Added for Cerebras API
 
 # --- Main Application ---
 
@@ -33,23 +34,31 @@ def process_payload(filepath, prompt_content):
         # 2. Compose the full message for the API
         message = prompt_content + "\n\n" + payload
 
-        # 3. Set up the API call headers and JSON data
-        headers = {
-            "Authorization": f"Bearer {cfg.OPENROUTER_API_KEY}",
-            "HTTP-Referer": cfg.OPENROUTER_API_URL,
-            "Content-Type": "application/json"
-        }
-        json_data = {
-            "model": cfg.NARRATIVE_LLM_MODEL,
-            "messages": [{"role": "user", "content": message}]
-        }
-
-        # 4. Send the request to the API
-        response = requests.post(cfg.OPENROUTER_API_URL, headers=headers, json=json_data, timeout=180) # Added timeout
-        response.raise_for_status()  # Raise an exception for bad status codes (4xx or 5xx)
-
-        # 5. Extract the output content from the response
-        output_content = response.json()["choices"][0]["message"]["content"]
+        # --- New Cerebras API Call ---
+        client = Cerebras(api_key=cfg.CEREBRAS_API_KEY)
+        chat_completion = client.chat.completions.create(
+            model=cfg.NARRATIVE_LLM_MODEL,
+            messages=[{"role": "user", "content": message}]
+        )
+        output_content = chat_completion.choices[0].message.content
+        
+        # --- Old OpenRouter API Call (Commented Out) ---
+        # # 3. Set up the API call headers and JSON data
+        # headers = {
+        #     "Authorization": f"Bearer {cfg.OPENROUTER_API_KEY}",
+        #     "HTTP-Referer": cfg.OPENROUTER_API_URL,
+        #     "Content-Type": "application/json"
+        # }
+        # json_data = {
+        #     "model": cfg.NARRATIVE_LLM_MODEL,
+        #     "messages": [{"role": "user", "content": message}]
+        # }
+        # # 4. Send the request to the API
+        # response = requests.post(cfg.OPENROUTER_API_URL, headers=headers, json=json_data, timeout=180) # Added timeout
+        # response.raise_for_status()  # Raise an exception for bad status codes (4xx or 5xx)
+        # # 5. Extract the output content from the response
+        # output_content = response.json()["choices"][0]["message"]["content"]
+        # --- End of Old Code ---
 
         # 6. Save the output to a new file in the output directory
         # This prevents overwriting the same 'output.txt' file each time.
@@ -61,11 +70,11 @@ def process_payload(filepath, prompt_content):
         print(f"Successfully processed. Output saved to: {output_filepath}")
 
         event_bus.publish(Event("NARRATIVE_FILE_READY", {"filepath": output_filepath}))
-        print(f"Successfully processed. Output saved to: {output_filepath}")
         return True
 
-    except requests.exceptions.RequestException as e:
-        print(f"Error processing {filename}: API request failed - {e}")
+    # The requests exception is no longer needed for the main path
+    # except requests.exceptions.RequestException as e:
+    #     print(f"Error processing {filename}: API request failed - {e}")
     except (KeyError, IndexError) as e:
         print(f"Error processing {filename}: Could not parse API response - {e}")
     except Exception as e:
