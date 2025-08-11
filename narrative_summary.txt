@@ -1,72 +1,105 @@
 Narrative Title                                              Score           Hits      
 ------------------------------------------------------------ --------------- ----------
-Stagflation risk as CPI sticks and labor market softens, p   3.2230          17        
-Stagflation Fears Intensify Amid Slowing Growth and Sticky   1.8756          34        
-Persistent Inflation Reshapes Consumer Spending Patterns     1.8725          75        
-Tariffs on Industrial Materials Threaten Semiconductor Mar   0.7004          23        
-U.S. Semiconductor Tariffs Reshape AI Supply Chain           0.3578          1         
-US Semiconductor Tariffs Spike, Favoring Domestic Chipmake   0.3528          4         
-Tariffs Disrupt Supply Chains, Impacting Semiconductor and   0.3475          9         
-Disney’s Streaming and Parks Expansion Faces Execution Ris   0.3472          5         
-Trump’s 100% Semiconductor Tariffs Roil Global Supply Chai   0.3431          4         
-Federal Reserve Rate Cuts and Bank Sector Dynamics           0.3388          31        
-U.S. Tariff Policies and Tech Sector Volatility              0.3388          35        
-Federal Reserve Rate Cut Expectations Reshape Financials a   0.0007          33        
-AI Integration in Public Safety Drives Tech Demand           0.0000          0         
-Defense Tech and Cybersecurity Budgets Expand                0.0000          0         
-Data Center Expansion Fueling Semiconductor Demand           0.0000          10        
-AI Innovation Drives Tech Sector Growth                      0.0000          33        
-Geopolitical Tensions Drive Trade Policy Shifts and Sector   0.0000          1         
-Semiconductor and Pharma Supply Chains Face Dual Regulator   0.0000          0         
-Consumer Discretionary Sector Squeezed by Inflationary Cos   0.0000          0         
-Non-Alcoholic Beverage Demand Offsets Alcohol Weakness       0.0000          0         
-Mortgage Giant Privatization Spurs Financial Sector Volati   0.0000          1         
-Accelerated AI Adoption in Enterprise Software and Semicon   0.0000          31        
-Economic Pressures Drive Consumer Shift to Value Retail an   0.0000          7         
-Tesla's Robotaxi Expansion and Autonomous Driving Progress   0.0000          5         
-Accelerating Data Center Expansion Driven by AI and Power    0.0000          2         
-Federal Reserve Rate Cuts Signal Support for Economic Acti   0.0000          0         
-Aluminum Tariffs Squeeze Beverage Margins                    0.0000          4         
-Weak Consumer Sentiment Boosts Discount Retailers            0.0000          27        
-Beverage Sector Struggles with Tariffs and Non-Alcoholic S   0.0000          6         
-McDonald’s Leverages Value Menus to Combat Economic Anxiet   0.0000          2         
-Climate Policy Uncertainty Shaping Energy Sector Sentiment   0.0000          3         
-Fed Rate Cuts Steepen Yield Curve, Boosting Banks            0.0000          5         
-Cisco-NVIDIA Alliance Fuels Enterprise AI Infrastructure D   0.0000          20        
-U.S. Semiconductor Onshoring Faces Regulatory and Logistic   0.0000          5         
-Escalating Global Conflicts Drive Defense Budget Surges      0.0000          4         
-Generative AI demand powers a multi‑year super‑cycle for A   0.0000          0         
-AI‑driven public‑safety tech boom lifts chipmakers           0.0000          0         
-U.S. defense budget expands amid heightened security threa   0.0000          0         
+US‑China tariff escalation squeezes export‑oriented tech f   124.2760        1486      
+U.S.–China AI‑chip revenue‑sharing policy pressures Nvidia   116.5124        1515      
+U.S. Export Controls Impose Revenue Share on China Chip Sa   83.8848         628       
+U.S.–China AI Chip Licensing Deal Secures Market Access      69.5946         478       
+US‑China AI Chip Export Concessions Tighten Revenue Flow     68.8890         929       
+U.S.‑China AI Chip Export Licensing Limits Chinese Sales     65.1829         542       
+Generative AI super‑cycle fuels demand for GPUs and cloud    44.5925         602       
+AI Innovation Drives Tech Sector Growth                      38.8466         497       
+US‑China AI‑chip export revenue‑sharing fee pressures semi   38.0338         704       
+Generative AI demand powers a multi‑year super‑cycle for A   36.6434         212       
+US‑China AI Chip Licensing Deal Unlocks Chinese Market       33.5375         310       
+US regulatory crackdown on big‑tech amplified by FTC indep   32.2299         114       
+U.S. Licensing Fee on China AI Chip Revenue Hits Semis       28.5665         342       
+Stagflation Fears Intensify Amid Slowing Growth and Sticky   25.7206         106       
+Fed Rate‑Cut Expectations Amplify Consumer Spending, Press   25.6909         215       
+Fed rate‑cut expectations lift high‑growth tech equities     24.6541         209       
+Explosion of AI and data‑center spending fuels GPU and clo   24.1307         130       
+U.S. Imposes 15% Revenue Share on AI Chip Sales to China     19.8393         122       
+US‑China chip export revenue‑sharing deal pressures semico   19.6872         385       
+Trump’s 100% Semiconductor Tariffs Roil Global Supply Chai   19.4811         60        
+US‑China AI Chip Export Licensing Hits Nvidia and AMD        17.3647         145       
+AI Adoption Surge Fuels Cloud Spend and AI‑Accelerator Dem   16.9825         341       
+U.S. Semiconductor Onshoring Faces Regulatory and Logistic   16.5398         142       
+Cisco-NVIDIA Alliance Fuels Enterprise AI Infrastructure D   15.3412         70        
+U.S. Tariff Policies and Tech Sector Volatility              14.9840         287       
+U.S.‑China Chip Export Concession Erodes Semiconductor Pro   11.1833         424       
+US‑China AI Chip Export Controls and Licensing Fees          10.6164         199       
+Stagflation risk as CPI sticks and labor market softens, p   10.3024         101       
+Escalating Trade Tariffs Disrupt Global Supply Chains        8.8739          61        
+US Semiconductor Tariffs Spike, Favoring Domestic Chipmake   7.6119          62        
+Surging Input Costs Squeeze Restaurant and Food Service Ma   6.8603          55        
+AI‑Driven GPU Demand Outstrips Supply, Propelling Nvidia a   5.9778          228       
+Tariffs on Industrial Materials Threaten Semiconductor Mar   5.6520          97        
+Tariffs Disrupt Supply Chains, Impacting Semiconductor and   5.3914          24        
+Semiconductor and Pharma Supply Chains Face Dual Regulator   5.3376          15        
+U.S. Eases Export Controls on High‑Bandwidth Memory for AI   5.3354          144       
+Geopolitical De‑Escalation Triggers Sharp Oil‑Price Declin   5.2946          20        
+Persistently low oil prices pressure energy equities         5.1085          47        
+Bitcoin boom driven by attention‑economy branding fuels cr   4.9716          30        
+U.S. Semiconductor Tariffs Reshape AI Supply Chain           4.9472          52        
+Enterprise AI Adoption Accelerates After GPT‑5 Launch        4.5429          21        
+Disney’s Streaming and Parks Expansion Faces Execution Ris   4.4276          21        
+Accelerating Data Center Expansion Driven by AI and Power    4.0335          14        
+Fed Rate Cuts Steepen Yield Curve, Boosting Banks            4.0159          35        
+U.S. Grants Limited AI‑Chip Export Licenses to China with    3.7283          20        
+15% Export Tax on Chinese AI Chip Sales Approved             3.4856          13        
+AI Server Surge Fuels Unprecedented Demand for GPUs and Cl   3.4797          97        
+US imposes 100% tariff on imported semiconductors, reshapi   3.1223          15        
+Redistricting Battles Heighten Political Risk, Steering Mo   3.0895          9         
+Aluminum Tariffs Squeeze Beverage Margins                    3.0553          33        
+Escalating Global Conflicts Drive Defense Budget Surges      2.7694          26        
+CATL lithium mine shutdown drags on EV battery supply        2.5519          316       
+Cooler Retail Inflation Fuels Expectations of Three Fed Ra   2.2240          12        
+AI Integration in Public Safety Drives Tech Demand           2.0628          10        
+Sports‑Streaming Rights Race Accelerates Subscriber Growth   1.9315          13        
+U.S. 15% levy on AI chip sales to China squeezes NVIDIA an   1.9228          10        
+Supreme Court Threat to FTC Independence Reduces Regulator   1.7217          23        
+Data Center Expansion Fueling Semiconductor Demand           1.6503          34        
+Tightening US‑China semiconductor export rules               1.5889          407       
+Latin America e‑commerce and fintech surge                   1.3522          4         
+Chinese Lithium Mine Shutdown Sends Prices Soaring, Boosts   1.3401          48        
+Optimism around US‑Russia ceasefire dampens defense‑spendi   1.3135          20        
+Trump-affiliated foreign real‑estate deals raise U.S. poli   1.2635          14        
+Escalating Israel‑Gaza conflict drives defense spending      1.2547          14        
+U.S. Rollback of Clean‑Energy Tax Credits Curtails Wind Or   1.2229          4         
+Federal Reserve Rate Cuts Signal Support for Economic Acti   1.0159          3         
+Rising delivery platform fees and supply‑chain tariffs squ   0.6869          2         
+Pro‑energy & pro‑defense policies under the second Trump a   0.6850          2         
+AI‑driven public‑safety tech boom lifts chipmakers           0.6788          2         
+US‑Russia peace talks raise stakes for oil sanctions         0.6776          2         
+Sticky inflation forces the Fed to keep rates high           0.6518          22        
+Geopolitical Tensions Drive Trade Policy Shifts and Sector   0.6312          3         
+Trump administration slashes mRNA vaccine research funding   0.6257          2         
+Sticky Goods Inflation Keeps Fed on Hold                     0.6122          4         
+Housing‑cost pressure curtails discretionary spending        0.6102          2         
+Sports broadcasting moves to digital streaming platforms     0.3400          3         
+Consumer Discretionary Sector Squeezed by Inflationary Cos   0.3398          1         
+Post‑Summit Defense Funding Surge                            0.3396          1         
+Tesla's Robotaxi Expansion and Autonomous Driving Progress   0.2761          20        
+Fed Tightens Capital Rules for Large Banks, Eases Burden o   0.0020          2         
+Mortgage Giant Privatization Spurs Financial Sector Volati   0.0017          11        
 Consumer ESG consciousness reshapes retail and beverage ca   0.0000          0         
-U.S. Eases Export Controls on High‑Bandwidth Memory for AI   0.0000          0         
-US imposes 100% tariff on imported semiconductors, reshapi   0.0000          3         
-Explosion of AI and data‑center spending fuels GPU and clo   0.0000          0         
-AI Adoption Surge Fuels Cloud Spend and AI‑Accelerator Dem   0.0000          0         
-Latin America e‑commerce and fintech surge                   0.0000          0         
-Power‑generator demand surge amid extreme weather            0.0000          0         
 Regulatory crackdown on disposable e‑cigarettes              0.0000          0         
-Generative AI Fuels a Three‑Year Tech Bull Run               0.0000          0         
-Stock‑Market Wealth Effect Spurs Consumer Discretionary Ga   0.0000          0         
-Pro‑energy & pro‑defense policies under the second Trump a   0.0000          0         
-Accelerating corporate AI adoption fuels demand for AI‑acc   0.0000          0         
-Rising delivery platform fees and supply‑chain tariffs squ   0.0000          0         
-Redistricting Battles Heighten Political Risk, Steering Mo   0.0000          0         
-US‑Russia peace talks raise stakes for oil sanctions         0.0000          0         
-Sticky inflation forces the Fed to hold rates higher         0.0000          0         
-Escalating Israel‑Gaza conflict drives defense spending      0.0000          0         
-Geopolitical Tensions Drive Defense Budget Expansion         -0.0005         8         
-Threats to FTC Independence Reshape Tech Regulatory Risk     -0.3382         6         
-Government Mortgage Exit Sparks Housing Market Uncertainty   -0.3409         13        
-US Tariff Relief for Domestic Chip Production Sparks Semic   -0.3417         1         
-Supreme Court Threat to FTC Independence Reduces Regulator   -0.3419         7         
-E-commerce Giants Weather Tariff Pressures                   -0.3421         4         
-Easing Monetary Policy to Fuel Tech & Consumer Discretiona   -0.3429         11        
-Escalating Trade Tariffs Disrupt Global Supply Chains        -0.3434         14        
-Surging Input Costs Squeeze Restaurant and Food Service Ma   -0.3468         12        
-Escalating US-China Trade Tensions Drive Tech Supply Chain   -0.3470         6         
-Federal Reserve Signals Rate Cuts After Moderating Inflati   -0.7977         3         
-Weakening macro data fuels expectations of Fed rate cuts,    -0.9260         20        
-Accelerated Fed Rate Cuts to Stimulate Economic Activity     -1.7701         30        
-Fed Rate Cuts Boost Tech Growth, Pressure Financials         -2.0401         80        
-Fed Rate‑Cut Expectations Amplify Consumer Spending, Press   -2.5561         13        
+Escalating Ukraine‑Russia conflict drives higher US defenc   0.0000          0         
+Women’s sports media boom drives advertising spend           0.0000          0         
+US 100% semiconductor import tariff and licensing fees str   0.0000          0         
+AI-driven automation cuts entry‑level hiring, dampening gr   0.0000          0         
+Escalating Gaza conflict spurs U.S. defense spending         0.0000          0         
+Disney Shifts Focus to Profitability, Launches High‑Priced   0.0000          0         
+Tesla’s AI‑driven robotaxi rollout gains momentum            0.0000          0         
+ARM‑based CPUs Surge in Data‑Center Market                   0.0000          0         
+Apple Accelerates AI Push with Perplexity Acquisition        0.0000          0         
+Weakening Labor Market Saps Consumer Spending                0.0000          0         
+Ukraine war stokes U.S. defense spending and oil demand, l   0.0000          0         
+Federalization of D.C. Police Triggers Defense Spending Su   0.0000          0         
+Massive IRS Funding Cuts Reduce Tax Enforcement              0.0000          0         
+Gold Tariff Removal Fuels Safe‑Haven Rally Amid Inflation    0.0000          0         
+US‑China AI chip revenue‑share mandate squeezes pure‑play    0.0000          0         
+Higher‑than‑expected CPI pushes the Fed to hold rates, tri   0.0000          0         
+AI‑Driven Earnings Upside for Mega‑Cap Tech                  0.0000          0         
+Persistent US‑China Tariff Tensions Drag Corporate Spendin   0.0000          0         
+US Strategic Push on Greenland Rare‑Earths Boosts Defense    0.0000          0         
+Stock‑Market Wealth Effect Spurs Consumer Discretionary Ga   -0.1748         32        

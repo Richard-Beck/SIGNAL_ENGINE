@@ -25,6 +25,7 @@ dist/
 # files like logs, state files, indexes, and narratives. These are artifacts,
 # not source code.
 data/
+reports/
 
 # --- IDE & Editor Configuration ---
 # Ignore configuration files from common editors and IDEs.
