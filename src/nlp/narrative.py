@@ -38,6 +38,7 @@ class Narrative:
         self.hit_count = 0
         self.performance_score = 0.0
 
+
     @classmethod
     def from_json(cls, json_data: Dict[str, Any]) -> 'Narrative':
         """

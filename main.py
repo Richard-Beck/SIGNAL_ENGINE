@@ -2,11 +2,12 @@
 import os, sys, signal, threading, time
 from config import main_config as cfg
 from src.nlp.narrative_manager import NarrativeManager
-from src.nlp.narrative_eval import MatchLogger
+from src.nlp.narrative_eval import DailyMatchLogger
 # adjust import to your project layout if needed:
 from src.data_ingestion.streamer import run_streamer_service   # or: from streamer import run_streamer_service
 from src.narrative_generation.generate_triggers import run_generator_service
-
+from src.trading.trading_manager import TradingManager
+from src.events import event_bus
 def ensure_fifo(path: str):
     if not os.path.exists(path):
         os.mkfifo(path)
@@ -25,6 +26,7 @@ def main():
 
     # 3) Start the narrative manager
     manager = NarrativeManager(cfg)
+    trading_manager = TradingManager(event_bus)
 
     # 4) Load prior state if present (restores FAISS; no re-embedding)
     state_path = getattr(cfg, "NARRATIVE_MANAGER_PATH", None)
@@ -40,7 +42,7 @@ def main():
     manager.start_match_pipe()  # chunking + match per window handled inside
 
     print("▶️ Initializing event subscribers...")
-    match_logger = MatchLogger(output_filepath="./data/match_file.txt")
+    match_logger = DailyMatchLogger(output_dir=cfg.MATCH_LOG_DIR)
     match_logger.register()
     
     t_gen = threading.Thread(target=run_generator_service, daemon=True)

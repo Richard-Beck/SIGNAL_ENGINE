@@ -113,6 +113,8 @@ def download_price_data():
     print(f"\nAll data has been successfully saved to: {output_path}")
     print(f"Total rows saved: {len(final_df)}")
 
+    return(output_path)
+
 
 if __name__ == '__main__':
     # This allows the script to be run directly from the command line

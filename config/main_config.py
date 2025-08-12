@@ -1,9 +1,16 @@
 import os
 from dotenv import load_dotenv
+import pytz
 
 # Load environment variables from a .env file if it exists.
 # This is useful for keeping sensitive data like API keys out of version control.
 load_dotenv()
+
+# --- Timezone Configuration ---
+# Central place for all timezone-related settings.
+# 'America/New_York' correctly handles both EST and EDT.
+utc_tz = pytz.utc
+edt_tz = pytz.timezone('America/New_York')
 
 # --- Path and Directory Settings ---
 # A central place for all file and folder paths. Using os.path.join
@@ -29,7 +36,7 @@ LIVE_STATE_PREFIX = os.path.join(DATA_DIR, "live_db_state")
 CANDIDATE_STATE_PREFIX = os.path.join(DATA_DIR, "candidate_db_state")
 NARRATIVE_MANAGER_PATH = os.path.join(DATA_DIR, "narrative_manager.pkl")
 TEST_NARRATIVE_MANAGER_PATH = os.path.join(DATA_DIR, "test_narrative_manager.pkl")
-MATCH_LOG_FILE = os.path.join(LOG_DIR, "detected_matches.csv")
+MATCH_LOG_DIR = os.path.join(DATA_DIR, "matches")
 LIVE_RESULTS_FILE = os.path.join(LOG_DIR, "live_results.csv")
 LLM_SERVER_LOG_FILE = os.path.join(LOG_DIR, "llm_server.log")
 ARCHIVED_NARRATIVE_PATH = os.path.join(DATA_DIR, "archived_narratives")
